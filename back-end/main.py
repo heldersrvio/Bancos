@@ -13,14 +13,14 @@ def banksList():
         'list': nomes
     }
 
-@app.route('/bankcode/<bank_name>')
-def bankCode(bank_name):
+@app.route('/bankname/<bank_code>')
+def bankCode(bank_code):
     cursor = mysql.get_db().cursor()
-    print(bank_name)
-    query = 'SELECT CODIGO FROM BANCOS WHERE NOME = %s'
-    cursor.execute(query, bank_name)
-    codigo = cursor.fetchall()[0][0]
+    print(bank_code)
+    query = 'SELECT NOME FROM BANCOS WHERE CODIGO = %s'
+    cursor.execute(query, bank_code)
+    nome = cursor.fetchall()[0][0]
     cursor.close()
     return {
-        'codigo': codigo
+        'name': nome
     }
