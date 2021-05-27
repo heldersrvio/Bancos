@@ -1,0 +1,8 @@
+<button id="list-all-button" (click)="onClick()">{{buttonLabel}}</button>
+<div id="bank-list-container">
+    <ul>
+        <li *ngFor="let bank of banks.list">
+            <span class="bank-name-span">{{bank}}</span>
+        </li>
+    </ul>
+</div>
