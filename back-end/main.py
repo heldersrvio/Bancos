@@ -1,6 +1,7 @@
 from app import app
 import mysql.connector
 import pymysql
+from db import mysql
 from flask import Flask, request
 
 @app.route('/bankslist', methods=['GET'])
