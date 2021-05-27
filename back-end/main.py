@@ -19,7 +19,7 @@ def bankCode(bank_code):
     print(bank_code)
     query = 'SELECT NOME FROM BANCOS WHERE CODIGO = %s'
     cursor.execute(query, bank_code)
-    nome = None if len(cursor.fetchall()) == 0 else cursor.fetchall()[0][0]
+    nome = None if len(cursor.fetchall()) == 0 else cursor.fetchall()[0]
     cursor.close()
     return {
         'name': nome
