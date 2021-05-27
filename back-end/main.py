@@ -1,12 +1,14 @@
 from app import app
-import pymysql
 from db import mysql
 from flask import Flask, request
 
+@app.route('/')
+def index():
+    return '<p>Hello</p>'
+
 @app.route('/bankslist', methods=['GET'])
 def banksList():
-    connection = mysql.connect()
-    cursor = connection.cursor(pymysql.cursors.DictCursor)
+    cursor = mysql.get_db().cursor()
     query = 'SELECT NOME FROM BANCOS'
     cursor.execute(query)
     nomes = [row[0] for row in cursor.fetchall()]
@@ -17,8 +19,7 @@ def banksList():
 
 @app.route('/bankname/<bank_code>', methods=['GET'])
 def bankCode(bank_code):
-    connection = mysql.connect()
-    cursor = connection.cursor(pymysql.cursors.DictCursor)
+    cursor = mysql.get_db().cursor()
     print(bank_code)
     query = 'SELECT NOME FROM BANCOS WHERE CODIGO = %s'
     cursor.execute(query, bank_code)
