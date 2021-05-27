@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError } from 'rxjs/operators';
 import { Bank } from '../bank';
 
 @Component({
@@ -11,6 +10,7 @@ import { Bank } from '../bank';
 export class BankSearchComponent implements OnInit {
 
   error = false
+  loading = false
   inputText = ''
   result = ''
 
@@ -21,7 +21,15 @@ export class BankSearchComponent implements OnInit {
 
   onClick(): void {
     if (this.inputText.length > 0) {
-      this.http.get<Bank>(`https://bancos-back-end.herokuapp.com/bankname/${this.inputText}`).subscribe((obj) => this.result = obj.name)
+      this.loading = true
+      this.http.get<Bank>(`https://bancos-back-end.herokuapp.com/bankname/${this.inputText}`).subscribe((obj) =>
+      {
+        this.result = obj.name
+        this.loading = false
+      }, (_error) => {
+        this.error = true
+        this.loading = false
+      })
     }
   }
 

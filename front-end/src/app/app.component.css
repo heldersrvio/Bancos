@@ -1,5 +1,5 @@
 #main-content {
     display: flex;
     flex-direction: row;
-    height: 100%;
+    height: calc(100vh - 100px - 5px);
 }

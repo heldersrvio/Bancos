@@ -1,10 +1,14 @@
 <div id="search-area">
     <input type="text" [(ngModel)]="inputText" placeholder="Código de compensação">
-    <button id="search-button" (click)="onClick()"></button>
+    <button *ngIf="!loading; else elseLoading" id="search-button" (click)="onClick()"></button>
+    <ng-template #elseLoading>
+        <div class="lds-dual-ring"></div>
+    </ng-template>
 </div>
 <div id="result">
-    <span *ngIf="result !== null && result.length > 0; else elseBlock">Nome do Banco: {{result}}</span>
+    <span *ngIf="!error && result !== null && result.length > 0; else elseBlock">Nome do Banco: <b>{{result}}</b></span>
     <ng-template #elseBlock>
-        <span *ngIf="result === null">Nenhum banco encontrado</span>
+        <span *ngIf="!error && result === null">Nenhum banco encontrado</span>
+        <span *ngIf="error" class="error-span">Erro ao tentar acessar os dados</span>
     </ng-template>
 </div>
