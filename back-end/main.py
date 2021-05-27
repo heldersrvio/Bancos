@@ -16,10 +16,10 @@ def banksList():
 @app.route('/bankname/<bank_code>', methods=['GET'])
 def bankCode(bank_code):
     cursor = mysql.get_db().cursor()
-    print(bank_code)
     query = 'SELECT NOME FROM BANCOS WHERE CODIGO = %s'
     cursor.execute(query, bank_code)
-    nome = None if len(cursor.fetchall()) == 0 else cursor.fetchall()[0]
+    result = cursor.fetchall()
+    nome = None if len(result) == 0 else result[0][0]
     cursor.close()
     return {
         'name': nome
