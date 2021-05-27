@@ -2,6 +2,10 @@ from app import app
 from db import mysql
 from flask import Flask, request
 
+@app.route('/')
+def index():
+    return '<p>Hello</p>'
+
 @app.route('/bankslist', methods=['GET'])
 def banksList():
     cursor = mysql.get_db().cursor()
