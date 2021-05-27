@@ -1,11 +1,7 @@
-import os
-from dotenv import load_dotenv
 from app import app
 import mysql.connector
 import pymysql
 from flask import Flask, request
-
-load_dotenv()
 
 @app.route('/bankslist', methods=['GET'])
 def banksList():
