@@ -1,8 +1,14 @@
-<button id="list-all-button" (click)="onClick()">{{buttonLabel}}</button>
-<div id="bank-list-container">
+<button *ngIf="loading === false; else elseBlock" id="list-all-button" (click)="onClick()">{{buttonLabel | uppercase}}</button>
+<ng-template #elseBlock>
+    <div class="lds-dual-ring"></div>
+</ng-template>
+<div *ngIf="error===false; else errorBlock" id="bank-list-container">
     <ul>
-        <li *ngFor="let bank of banks.list">
+        <li *ngFor="let bank of banks">
             <span class="bank-name-span">{{bank}}</span>
         </li>
     </ul>
 </div>
+<ng-template #errorBlock>
+    <span class="error-span">Erro ao tentar acessar os dados.</span>
+</ng-template>

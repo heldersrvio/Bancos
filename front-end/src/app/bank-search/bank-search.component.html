@@ -1,0 +1,10 @@
+<div id="search-area">
+    <input type="text" [(ngModel)]="inputText" placeholder="Código de compensação">
+    <button id="search-button" (click)="onClick()"></button>
+</div>
+<div id="result">
+    <span *ngIf="result !== null && result.length > 0; else elseBlock">Nome do Banco: {{result}}</span>
+    <ng-template #elseBlock>
+        <span *ngIf="result === null">Nenhum banco encontrado</span>
+    </ng-template>
+</div>
