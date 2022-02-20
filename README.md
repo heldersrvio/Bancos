@@ -2,7 +2,7 @@
 
 Catálogo de bancos associados a seus respectivos códigos de compensação.
 
-Interface da aplicação: https://heldersrvio.github.io/Bancos/
+Interface da aplicação: https://heldersrvio.github.io/bancos/
 
 ## Back-end
 
@@ -20,4 +20,4 @@ O *back-end* foi hospedado por meio do serviço [Heroku](https://heroku.com).
 
 Utilizou-se o *framework* [Angular](https://angular.io) para desenvolver o *front-end* da aplicação. A interface conta com duas áreas: a área de listagem de todos os bancos (implementada pelo componente 'bank-list-display') e a área de pesquisa de um determinado banco pelo código de compensação (implementada pelo componente 'bank-search').
 
-O *deploy* do *front-end* foi feito com o [GitHub Pages](https://pages.github.com) e pode ser acessado [aqui](https://heldersrvio.github.io/Bancos/).
+O *deploy* do *front-end* foi feito com o [GitHub Pages](https://pages.github.com) e pode ser acessado [aqui](https://heldersrvio.github.io/bancos/).
